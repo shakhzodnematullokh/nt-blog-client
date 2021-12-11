@@ -1,16 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./auth.scss"
 
 function Auth() {
+
 	return (
-		<div>
+		<div className="auth-box">
 			<h1>Auth</h1>
-			<Link to="/login" className="link">
-				Login
-			</Link>{" "}
-			<Link to="/register" className="link">
-				Register
-			</Link>
+			<div>
+				<Link to="/login" className="link">
+					Login
+				</Link>{" "}
+				<Link to="/register" className="link">
+					Register
+				</Link>
+			</div>
 		</div>
 	);
 }

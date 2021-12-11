@@ -1,5 +1,6 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
+import "./register.scss"
 
 function Register() {
 	const [setToken] = useAuth(false);
@@ -25,7 +26,7 @@ function Register() {
 	};
 
 	return (
-		<div>
+		<div className="register-box">
 			<h1>Register</h1>
 
 			<form onSubmit={handleRegister}>

@@ -1,5 +1,6 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
+import "./login.scss"
 
 function Login() {
 	const [setToken] = useAuth(false);
@@ -25,7 +26,7 @@ function Login() {
 	};
 
 	return (
-		<div>
+		<div className="login-box">
 			<h1>Login</h1>
 
 			<form onSubmit={handleLogin}>

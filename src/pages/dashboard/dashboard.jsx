@@ -1,4 +1,4 @@
-import "./dashboard.css";
+import "./dashboard.scss";
 import { useRef, useState } from "react";
 import { decodeToken } from "react-jwt";
 import useAuth from "../../hooks/useAuth";
@@ -118,9 +118,6 @@ function Dashboard() {
 		changePasswordRef.current.open = false;
 	};
 
-
-	console.log(blogs)
-
 	return (
 		<div
 			onKeyUp={(e) => {
@@ -130,48 +127,52 @@ function Dashboard() {
 					deleteBlogRef.current.open = false;
 				}
 			}}
+
+			className="dashboard-box"
 		>
 			<h1>Dashboard</h1>
 
-			<button
-				onClick={() => {
-					createBlogRef.current.open = true;
-				}}
-			>
-				create
-			</button>
+			<div className="button-box">
+				<button
+					onClick={() => {
+						createBlogRef.current.open = true;
+					}}
+				>
+					create
+				</button>
 
-			<button
-				onClick={() => {
-					updateBlogRef.current.open = true;
-					fetch("https://ntblog.herokuapp.com/dashboard/blogs")
-					.then((res) => res.json())
-					.then((data) => setBlogs(data))
-					.catch((e) => console.log(e));
-				}}
-			>
-				update
-			</button>
+				<button
+					onClick={() => {
+						updateBlogRef.current.open = true;
+						fetch("https://ntblog.herokuapp.com/dashboard/blogs")
+						.then((res) => res.json())
+						.then((data) => setBlogs(data))
+						.catch((e) => console.log(e));
+					}}
+				>
+					update
+				</button>
 
-			<button
-				onClick={() => {
-					deleteBlogRef.current.open = true;
-					fetch("https://ntblog.herokuapp.com/dashboard/blogs")
-					.then((res) => res.json())
-					.then((data) => setBlogs(data))
-					.catch((e) => console.log(e));
-				}}
-			>
-				delete
-			</button>
+				<button
+					onClick={() => {
+						deleteBlogRef.current.open = true;
+						fetch("https://ntblog.herokuapp.com/dashboard/blogs")
+						.then((res) => res.json())
+						.then((data) => setBlogs(data))
+						.catch((e) => console.log(e));
+					}}
+				>
+					delete
+				</button>
 
-			<button
-				onClick={() => {
-					changePasswordRef.current.open = true;
-				}}
-			>
-				change password
-			</button>
+				<button
+					onClick={() => {
+						changePasswordRef.current.open = true;
+					}}
+				>
+					change password
+				</button>
+			</div>
 
 			<dialog ref={createBlogRef} open={false}>
 				<div
@@ -188,8 +189,8 @@ function Dashboard() {
 						<form onSubmit={handleBlog}>
 							<input type="file" />
 							<input className="input" type="text" placeholder="title" />
-							<input className="input" type="text" placeholder="body" />
-							<button type="submit">Create blog</button>
+							<textarea className="input" type="text" placeholder="body" />
+							<button type="submit">Create</button>
 						</form>
 					</div>
 				</div>
@@ -217,8 +218,8 @@ function Dashboard() {
 							</select>
 							<input type="file" />
 							<input className="updateInput" type="text" placeholder="title" />
-							<input className="updateInput" type="text" placeholder="body" />
-							<button type="submit">Update blog</button>
+							<textarea className="updateInput" type="text" placeholder="body" />
+							<button type="submit">Update</button>
 						</form>
 					</div>
 				</div>
@@ -243,7 +244,7 @@ function Dashboard() {
                                     }) : []
                                 }
                                 </select>
-                            <button type="submit">Delete blog</button>
+                            <button type="submit">Delete</button>
                         </form>
                     </div>
                 </div>

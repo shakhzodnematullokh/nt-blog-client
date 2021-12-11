@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./home.scss"
 
 function Home() {
 
@@ -23,16 +24,16 @@ function Home() {
 
 	return (
 		<>
-			<h1>Welcome</h1>
+			<div className="search-box">
+				<form onSubmit={handleSearch}>
+					<input className="searchInput" type="text" placeholder="enter blog title"/>
+					<button type="submit">Search</button>
+				</form>
+	            <Link to="/allBlogs" className="link">All blogs</Link>
+			</div>
 
-			<form onSubmit={handleSearch}>
-				<input className="searchInput" type="text" placeholder="enter blog title"/>
-				<button type="submit">Search</button>
-			</form>
 
-            <Link to="/allBlogs" className="link">All blogs</Link>
-
-			<div>
+			<div className="lenta">
 				{
 					blogs.blogs ? blogs.blogs.map(b => {
 						return <div key={b.blog_id}>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { decodeToken } from "react-jwt";
 import useAuth from "../../hooks/useAuth";
+import "./pagination.scss"
 
 function Pagination() {
 
